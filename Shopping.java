@@ -32,15 +32,6 @@ public boolean buying = true;
     public String otherinput;
     public String output = "";
 
-
-
-    public double total_Price = food_Price + clothing_Price + weapons_Price +
-            oxen_Price + spareWagonWheel_Price + spareWagonAxel_Price + spareWagonTongues_Price +
-            + medicalSupplyBox_Price + sewingKit_Price + fireStartingKit_Price + kidsToys_Price +
-            familyKeepsakes_Price + seedPackeges_Price + shovels_Price + cookingItems_Price;
-
-
-
     public String storeLayout() {
 
 
