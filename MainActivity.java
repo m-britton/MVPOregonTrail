@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Health overallHealth = new Health();
     Wagon wagon = new Wagon();
     Location location = new Location(0, 1, 1, 200, 100, 300);
+    Shop rmv = new Shop();
 
     String rations = "";
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView foodBox = findViewById(R.id.foodRemaining);
         final TextView healthBox = findViewById(R.id.healthBox);
         final TextView reBox = findViewById((R.id.REbox));
+        final Button enter = findViewById(R.id.enter);
+        
 
 
 
