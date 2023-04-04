@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // A list of all the buttons and text boxes used for the GUI
         final TextView display = findViewById(R.id.Display);
         final Button nextDay = findViewById(R.id.button);
         final TextView date = findViewById(R.id.Date);
@@ -37,15 +38,19 @@ public class MainActivity extends AppCompatActivity {
         final TextView shopDisplay = findViewById(R.id.shopDisplay);
 
 
+        // Display the layout of the store for the user to see what they can buy
         shopDisplay.setText(shop.storeLayout());
 
+        // Actions that occur when the Enter button is clicked
         enter.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v)
             {
 
+                // Get the users input from the text box and convert to a string
                 String input = User_InputBox.getText().toString();
 
+                // If the user decides to buy items then the item bought and the price owed for the item are updated
                 if(shop.buying)
                 {
                     String boughtItem = shop.buyItem(input);
@@ -59,33 +64,31 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-        //Wagon wagon = new Wagon(shop.food_Price/.1, shop.clothing_Price/.2,shop.weapons_Price/20,shop.oxen_Price/50,shop.spareWagonWheel_Price/8,shop.spareWagonAxel_Price/3, shop.spareWagonTongues_Price/3, shop.medicalSupplyBox_Price/1.5, shop.sewingKit_Price/.50, shop.fireStartingKit_Price/.25, shop.kidsToys_Price/.05, 1, shop.seedPackeges_Price/.01, shop.shovels_Price/2.5, shop.cookingItems_Price/1.5);
+        
+        // Actions occur when the Next Day button is clicked
         nextDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //resets display in case no location is reached
+                if(wagonMade) {
+                    wagon = new Wagon(shop.food_Price / .1, shop.clothing_Price / .2, shop.weapons_Price / 20, shop.oxen_Price / 50, shop.spareWagonWheel_Price / 8, shop.spareWagonAxel_Price / 3, shop.spareWagonTongues_Price / 3, shop.medicalSupplyBox_Price / 1.5, shop.sewingKit_Price / .50, shop.fireStartingKit_Price / .25, shop.kidsToys_Price / .05, 1, shop.seedPackeges_Price / .01, shop.shovels_Price / 2.5, shop.cookingItems_Price / 1.5);
+                    wagonMade = false;
+                }
+                
+                // Remove the shop display and the welcome message form the screen for the next days occurring
+                display.setText("");
+                shopDisplay.setText("");
+                
                 /* Location based classes that happen everytime a button is clicked.
                     Every button click adds 1 day and changes months if appropriate.
                     checks if the player has reached a river, town, or landmark.
                     Decreases distance of player form river, town, and landmarks.
                 */
-
-
-                //resets display in case no location is reached
-                if(wagonMade) {
-                    wagon = new Wagon(shop.food_Price / .1, shop.clothing_Price / .2, shop.weapons_Price / 20, shop.oxen_Price / 50, shop.spareWagonWheel_Price / 8, shop.spareWagonAxel_Price / 3, shop.spareWagonTongues_Price / 3, shop.medicalSupplyBox_Price / 1.5, shop.sewingKit_Price / .50, shop.fireStartingKit_Price / .25, shop.kidsToys_Price / .05, 1, shop.seedPackeges_Price / .01, shop.shovels_Price / 2.5, shop.cookingItems_Price / 1.5);
-                wagonMade = false;
-                }
-                display.setText("");
-                shopDisplay.setText("");
-
                 location.incrementDay();
                 location.setDistanceToLandmark(location.getDistanceToLandmark() - 20);
                 location.setDistanceToRiver(location.getDistanceToRiver() - 20);
                 location.setDistanceToTown(location.getDistanceToTown() - 20);
-
-
                 location.atLandmark();
 
 
@@ -112,21 +115,25 @@ public class MainActivity extends AppCompatActivity {
                 overallHealth.startOfDayHealth();
 
                 /* Find whether or not a random event occurs each day.
+                    If a random event takes place a prompt appears for the user to see what happened
                     If someone gets bit by a snake the overall health goes up by 10
                     If Indians help you find food the amount of food goes up 8 pounds
                     If you take the wrong trail you have to back track using vital supplies
-                    If a random event takes place a prompt appears for the user to see what happened
+                    Otherwise they message "It was a normal day" apears
                  */
                 if (re.snakeBite()) {
                     overallHealth.addHealth(10);
                     reBox.setText("You got bit by a snake");
-                } else if (re.indiansHelpFindFood()) {
+                } 
+                else if (re.indiansHelpFindFood()) {
 //                    Wagon.setFood(Wagon.getFood() + 8);
                     reBox.setText("Indians helped you find food");
-                } else if (re.wrongTrail()) {
+                } 
+                else if (re.wrongTrail()) {
 
                     reBox.setText("OH-NO you took the wrong trail");
-                } else {
+                } 
+                else {
                     reBox.setText("It was a normal day!");
                 }
 
