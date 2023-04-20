@@ -109,6 +109,27 @@ public class Health {
 
         return health;
     }
+    
+    
+    //////////////////////////////////////////////
+    
+    public double healthFromPace(int pace){
+        //pace = pace.toLowerCase();
+        if(pace == 1){
+            health += 0;
+        }
+        else if(pace == 2){
+            health += 2;
+        }
+        else if(pace == 3){
+            health += 4;
+        }
+        //else 
+
+        return health;
+    }
+    
+   ///////////////////////////////////////////////
 
     /**
      * generalHealth -> Describes the overall health of the group. The higher the health variable is
