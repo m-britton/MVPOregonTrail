@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     Decreases distance of player form river, town, and landmarks.
                 */
                 location.incrementDay();
-                location.setDistanceToLandmark(location.getDistanceToLandmark() - 20);
+                location.setDistanceToLandmark(location.getDistanceToLandmark() - 20); //  location.setDistanceToLandmark(location.getDistanceToLandmark() - (20 * pace))
                 location.setDistanceToRiver(location.getDistanceToRiver() - 20);
                 location.setDistanceToTown(location.getDistanceToTown() - 20);
                 location.atLandmark();
