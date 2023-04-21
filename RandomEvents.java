@@ -96,106 +96,239 @@ public class RandomEvents {
         return eventProbability <= wrongWay;
     }
 
-//    public boolean severeStorm(){
-//
-//    }
+    /**
+     * severeStorm -> Determines the chance of experiencing a severe thunderstorm. The probability is
+     *                  based on the average precipitation of the current location and current month.
+     * @return -> True if the randomly generated probability is less than the probability of a storm occurring.
+     */
+    public boolean severeStorm(double rain, int month){
 
+    }
+
+    /**
+     * severeBlizzard -> Determines whether or not the group encounters a severe blizzard. Only used
+     *                  when the temperature is cold or very cold.
+     * @return -> True if the randomly generated probability is less than the probability of a blizzard
+     *              False otherwise.
+     */
     public boolean severeBlizzard(){
         setEventProbability();
         return eventProbability <= blizzard;
     }
 
+    /**
+     * heavyFog -> Determines whether or not the group encounters heavy fog. Only used after Fort Hall.
+     * @return -> True if the randomly generated probability if less than the probability of heavy fog
+     *              False otherwise
+     */
     public boolean heavyFog(){
         setEventProbability();
         return eventProbability <= foggy;
     }
 
+    /**
+     * hailStorm -> Determines whether or not the group experiences the effects of a hail storm
+     * @return -> True if the randomly generated probability is less than the likelihood of a hail storm
+     *              False otherwise
+     */
     public boolean hailStorm(){
         setEventProbability();
         return eventProbability <= hail;
     }
 
+    /**
+     * injuredOxenPrairie -> Used when traveling on the prairie. Determines if an oxen is injured
+     * @return -> True if the randomly generated probability is less than that of getting injured
+     *              on the prairie; False otherwise.
+     */
     public boolean injuredOxenPrairie(){
         setEventProbability();
         return eventProbability <= prairieInjury;
     }
 
+    /**
+     * injuredOxenMountain -> Used when traveling through the mountains. Determines if an ox gets an injury.
+     * @return -> True if the randomly generated probability is less than that of getting injured
+     *              in the mountains; False otherwise.
+     */
     public boolean injuredOxenMountain(){
         setEventProbability();
         return eventProbability <= mountainInjury;
     }
 
+    /**
+     * injuredPersonPrairie -> Used when traveling on the prairie. Determines if a party member gets injured.
+     * @return -> True if the randomly probability is less than the likelihood of getting an injury
+     *              on the prairie; False otherwise.
+     */
     public boolean injuredPersonPrairie(){
         setEventProbability();
         return eventProbability <= prairieInjury;
     }
 
+    /**
+     * injuredPersonMountains -> Used when traveling through the mountains. Determines if a person
+     *                      sustains an injury while traveling.
+     * @return -> True if the randomly generated probability is less than the probability of getting
+     *              injured in the mountains; False otherwise.
+     */
     public boolean injuredPersonMountain(){
         setEventProbability();
         return eventProbability <= mountainInjury;
     }
 
+    /**
+     * lostTrail -> Determines whether or not the group loses the trail on their journey.
+     * @return -> True if the randomly generated probability is less than the likeliness of losing
+     *              the trail; False otherwise;
+     */
     public boolean lostTrail(){
         setEventProbability();
         return eventProbability <= lostTrail;
     }
 
+    /**
+     * roughTrail -> Used when traveling through the mountains. Determines whether or not the group
+     *              travels along a rough trail.
+     * @return -> True if the randomly generated probability if less than the probability of
+     *              experiencing rough terrain; False otherwise.
+     */
     public boolean roughTrail(){
         setEventProbability();
         return eventProbability <= roughTrail;
     }
 
+    /**
+     * impossibleTrail -> Used in mountainous regions. Determines whether or not the group find an
+     *                  impossible trail to travel.
+     * @return -> True if the randomly generated probability is less than the likelihood of finding
+     *              an impossible trail; False otherwise.
+     */
     public boolean impossibleTrail(){
         setEventProbability();
         return eventProbability <= impossibleTrail;
     }
 
+    /**
+     * foundFruit -> Used during months May-September. Determines whether or not the group finds wild
+     *              fruit along the trail during their travels.
+     * @return -> True if the randomly generated probability if less than the probability of finding
+     *              wild fruit; False otherwise.
+     */
     public boolean foundFruit(){
         setEventProbability();
         return eventProbability <= foundWildFruit;
     }
 
+    /**
+     * wagonFire -> Determines whether or not the groups wagon catches fire during the day.
+     * @return -> True if the randomly generated probability if less than that of the catching fire.
+     *              False otherwise.
+     */
     public boolean wagonFire(){
         setEventProbability();
         return eventProbability <= fire;
     }
 
+    /**
+     * lostPerson -> Determines whether or not a party member goes missing on the journey.
+     * @return -> True if the randomly generated probability if less than the probability of a
+     *              party member going missing; False otherwise.
+     */
     public boolean lostPerson(){
         setEventProbability();
         return eventProbability <= lostMember;
     }
 
+    /**
+     * lostOxen -> Determines whether or not one of the oxen wanders off.
+     * @return -> True if the randomly generated probability if less than the probability of an oxen
+     *              wandering off; False otherwise;
+     */
     public boolean lostOxen(){
         setEventProbability();
         return  eventProbability <= missingOx;
     }
 
+    /**
+     * foundWagon -> Determines whether or not the group finds an abandon wagon along the trail.
+     * @return -> True if the randomly generated probability if less than the probability of finding
+     *              an abandoned wagon; False otherwise.
+     */
     public boolean foundWagon(){
         setEventProbability();
         return eventProbability <= abandonedWagon;
     }
 
+    /**
+     * robbedAtNight -> Determines whether or not a thief comes in the middle of the night an robs
+     *                  the wagon.
+     * @return -> True if the randomly generated probability if less than the probability of a thief
+     *             robbing the wagon; False otherwise.
+     */
     public boolean robbedAtNight(){
         setEventProbability();
         return eventProbability <= thief;
     }
 
+    /**
+     * badWater -> Used when accumulated rainfall is less than 0.1 inch. Determines whether or not
+     *              the water is bad to consume.
+     * @return -> True if the randomly generated probability if less than the probability of consuming
+     *              bad water; False otherwise.
+     */
     public boolean badWater(){
         setEventProbability();
         return eventProbability <= badWater;
     }
 
+    /**
+     * littleWater -> Used when accumulated rainfall is below 0.1 inch. Determines whether or not the
+     *                  group has very little water access.
+     * @return -> True if the randomly generated probability if less than the probability of experiencing
+     *              very little water; False otherwise.
+     */
     public boolean littleWater(){
         setEventProbability();
         return eventProbability <= veryLittleWater;
     }
 
+    /**
+     * badGrass -> Used when accumulated rainfall is less than 0.1 inch. Determines whether or not the
+     *              grass is suitable for the oxen.
+     * @return -> True if the randomly generated probability if less than the probability of inadequate
+     *              grass; False otherwise.
+     */
     public boolean badGrass(){
         setEventProbability();
         return eventProbability <= inadequateGrass;
     }
 
-//    public boolean illness(){
-//        setEventProbability();
-//    }
+    /**
+     * illness -> Determines the likelihood of a party member contracting a disease. The probability
+     *              of contracting a disease fluctuates based on the overall health of the group.
+     *              The higher the health the more likely it is to contract a disease.
+     * @param health -> An integer that represents the overall health of the group.
+     * @return -> True if the randomly generated probability is less than the probability of contracting an illness..
+     */
+    public boolean illness(int health){
+        double illnessProbability = 0.0;
+        setEventProbability();
+        if(health <= 34){
+            illnessProbability = 8.0;
+        }
+        else if(health <= 65){
+            illnessProbability = 16.0;
+        }
+        else if(health <= 104){
+            illnessProbability = 24.0;
+        }
+        else if(health <= 139){
+            illnessProbability = 32.0;
+        }
+        else{
+            illnessProbability = 40.0;
+        }
+        return eventProbability <= illnessProbability;
+    }
 }

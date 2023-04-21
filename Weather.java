@@ -32,7 +32,6 @@ public class Weather {
      */
     public Weather(){}
 
-
     /**
      * setRandomAdd -> Sets a randomly generated amount between -20 and 20that is added to the
      *              temperature to create a new different each day.
@@ -322,14 +321,13 @@ public class Weather {
             case 6: zone6Rain = 1.6; break;
             case 7: zone6Rain = 0.5; break;
             case 8: zone6Rain = 0.8; break;
-            case 9: zone6Rain = 1.62; break;
+            case 9:zone6Rain = 1.62; break;
             case 10:zone6Rain = 3.2; break;
             case 11:zone6Rain = 5.3; break;
             case 12:zone6Rain = 5.5; break;
         }
         realRain = zone6Rain;
     }
-
 
     /**
      * getTemperature -> Using the temperatures from the different zones the daily temperature is found.
@@ -363,9 +361,8 @@ public class Weather {
      * getRainfall -> Using the rainfall from the different zones the average daily rainfall is found.
      * @param zone -> An integer used to determine which zone the group is in and the temperature of the zone
      * @param month -> An integer used to determine what of data to use.
-     * @return -> The rainfall that will determine the amount of rain for the day.
      */
-    public double getRainfall(int zone, int month){
+    public void getRainfall(int zone, int month){
         if(zone <= 1){
             setZone1Rain(month);
         }
@@ -381,12 +378,50 @@ public class Weather {
         else if(zone <= 5){
             setZone5Rain(month);
         }
-        else{
+        else {
             setZone6Rain(month);
         }
-        return realRain;
     }
 
+    /**
+     * getTotalRain -> Gets the total rainfall and surface water for the day.
+     * @return -> The total amount of rain or surface water.
+     */
+    public double getTotalRain(){return totalRain;}
+
+    /**
+     * chanceOfRain -> Determines if there is going to be rainy weather for the day. The probability
+     *                  of it raining is based on the total average rainfall for the month. The higher
+     *                  the average the more likely it i sto rain.
+     * @param zone -> Integer used to show the zone that the group is traveling through at the time.
+     * @param month -> Integer used to show what month of the year it is to determine the correlating rainfall.
+     * @return -> True if the randomly generated probability is lass than the probability of it raining.
+     *              False otherwise.
+     */
+    public boolean chanceOfRain(int zone, int month){
+        getRainfall(zone, month);
+        double chanceOfRain;
+        double itsRaining = Math.random() * 100;
+        if(realRain <= 1){
+            chanceOfRain = 10.0;
+        }
+        else if(realRain <= 2){
+            chanceOfRain = 20.0;
+        }
+        else if(realRain <= 3){
+            chanceOfRain = 30.0;
+        }
+        else if(realRain <= 4){
+            chanceOfRain = 45.0;
+        }
+        else if(realRain <= 5){
+            chanceOfRain = 60.0;
+        }
+        else{
+            chanceOfRain = 75.0;
+        }
+        return itsRaining <= chanceOfRain;
+    }
 
     /**
      * repeatWeather -> There is a 50/50 chance that the weather experienced today will repeat itself tomorrow
@@ -429,30 +464,45 @@ public class Weather {
     /**
      * heavyPrecipitation -> sets the probability for how heavy it will rain for the day
      */
-    public void heavyPrecipitation(){
-        rainHeaviness = Math.random();
+    public void heavyPrecipitation(boolean raining){
+        if(raining) {
+            rainHeaviness = Math.random();
+        }
+        else{
+            rainHeaviness = -1.0;
+        }
     }
 
     /**
      * totalRainfall -> Tracks the total amount of rainfall. The heaviness of the rain determines how
-     *              much rain to add to the total. The temperature
+     *              much rain to add to the total. The temperature is used to determine whether the
+     *              precipitation is rain or snow.
+     * @param zone -> Integer used to show the zone that the group is traveling through at the time.
+     * @param month -> Integer used to show what month of the year it is to determine the correlating rainfall.
      */
-    public void totalRainfall(){
-        heavyPrecipitation();
-        if(rainHeaviness <= .30){
-            if(realTemp <= 30){
-                totalSnow += 8;
+    public void totalRainfall(int zone, int month){
+        heavyPrecipitation(chanceOfRain(zone, month));
+        if(rainHeaviness != -1.0) {
+            if (rainHeaviness <= .30) {
+                if (realTemp <= 30) {
+                    totalSnow += 8;
+                } else {
+                    totalRain += 0.8;
+                }
             }
-            else{
-                totalRain += 0.8;
+            else {
+                if (realTemp <= 30) {
+                    totalSnow += 2;
+                } else {
+                    totalRain += 0.2;
+                }
             }
         }
-        else{
-            if(realTemp <= 30){
-                totalSnow += 2;
-            }
-            else{
-                totalRain += 0.2;
+        else {
+            if (realTemp <= 30) {
+                totalSnow += 0;
+            } else {
+                totalRain += 0.0;
             }
         }
     }
