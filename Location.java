@@ -47,6 +47,42 @@ public class Location {
             this.location = 0;
         }
     }
+    
+    public double LocationFromPace(int pace){
+       
+        double setPace = 20; //travel 20 miles a day
+      
+        else if(pace == 1){ //Steady pace
+            setPace =* 2;
+            
+        }
+        else if (pace = 2){ //Strenouse pace
+            setPace =* 1.5;
+        
+        }
+        else if (pace = 3){ //Grueling pace
+            setPace =* 1.5;
+        
+        }
+        return setPace;
+    }
+        
+        
+        
+        
+        else if(pace == 2){ // Mountaiouse terrain
+           pace = regularPace * 0.5;
+            
+        }
+        else if(pace == 4){ //Less then 4 healthy oxen
+            pace = (regularPace * this.oxen) / 4; //how to access oxen from the wagon class? this.oxen
+            
+        }
+        else{
+            health += 6;
+        }
+        return health;
+    }
 
     public void setMonth (int month)
     {
