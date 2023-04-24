@@ -390,6 +390,12 @@ public class Weather {
     public double getTotalRain(){return totalRain;}
 
     /**
+     * getTotalSnow -> Gets the total accumulated snow on the ground.
+     * @return -> The amount of snow on the ground.
+     */
+    public double getTotalSnow(){return totalSnow;}
+
+    /**
      * chanceOfRain -> Determines if there is going to be rainy weather for the day. The probability
      *                  of it raining is based on the total average rainfall for the month. The higher
      *                  the average the more likely it i sto rain.
