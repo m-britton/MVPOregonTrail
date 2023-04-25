@@ -76,7 +76,10 @@ public class Location {
             setpace = Health.getSickPeople() * .10;
             
         }
-        //if there is snow on the ground
+        if(getTotalSnow() >= 30){
+            setpace = 0;
+            
+        }
         
          return setPace;
     }
