@@ -69,7 +69,7 @@ public class Location {
         
         }
         if (Health.sickOx() < 4){
-          setPace = Health.getTotalOxen / 4;
+            setPace = Health.getTotalOxen / 4;
             
         }
         if(Health.getSickPeople() >= 1){
