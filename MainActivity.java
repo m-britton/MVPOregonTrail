@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
     Location location = new Location(0, 1, 1, 200, 100, 300);
     Shop shop = new Shop();
     Wagon wagon = new Wagon(shop.food_Price/.1, shop.clothing_Price/.2,shop.weapons_Price/20,shop.oxen_Price/50,shop.spareWagonWheel_Price/8,shop.spareWagonAxel_Price/3, shop.spareWagonTongues_Price/3, shop.medicalSupplyBox_Price/1.5, shop.sewingKit_Price/.50, shop.fireStartingKit_Price/.25, shop.kidsToys_Price/.05, 1, shop.seedPackeges_Price/.01, shop.shovels_Price/2.5, shop.cookingItems_Price/1.5);
-
+    MediaPlayer mp;
+    
     public boolean wagonMade = true;
+    public boolean mainThemeIsPlaying = false;
 
     String rations = "";
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText User_InputBox = findViewById(R.id.UserInput);
         final TextView shopDisplay = findViewById(R.id.shopDisplay);
 
+        //Media player to play main theme
+        mp = MediaPlayer.create(this,R.raw.MainTheme2-Tune);
 
         // Display the layout of the store for the user to see what they can buy
         shopDisplay.setText(shop.storeLayout());
@@ -70,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //Starts main theme if it is not currently playing
+                if(mainThemeIsPlaying = false){
+                    mp.start();
+                    mainThemeIsPlaying = true;
+                }
+                
                 //resets display in case no location is reached
                 if(wagonMade) {
                     wagon = new Wagon(shop.food_Price / .1, shop.clothing_Price / .2, shop.weapons_Price / 20, shop.oxen_Price / 50, shop.spareWagonWheel_Price / 8, shop.spareWagonAxel_Price / 3, shop.spareWagonTongues_Price / 3, shop.medicalSupplyBox_Price / 1.5, shop.sewingKit_Price / .50, shop.fireStartingKit_Price / .25, shop.kidsToys_Price / .05, 1, shop.seedPackeges_Price / .01, shop.shovels_Price / 2.5, shop.cookingItems_Price / 1.5);
