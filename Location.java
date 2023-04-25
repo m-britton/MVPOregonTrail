@@ -64,9 +64,6 @@ public class Location {
             setPace =* 1.5;
         
         }
-         return setPace;
-    }
-    
         if (whatLandmark("Chimney Rock") || whatLandmark("Independence Rock") || whatLandmark("Blue Mountaints")){
              setPace =* 0.5;
         
@@ -75,13 +72,16 @@ public class Location {
           setPace = Health.getTotalOxen / 4;
             
         }
-        int numberSickPerson = 0;
-        if(Health.sickPerson == true){
-            numberSickPerson++;
-            pace = numberSickPerson * .10;
+    
+        if(Health.sickPerson >= 1){
+            setpace = Health.sickPerson * .10;
             
         }
         //if there is snow on the ground
+        
+         return setPace;
+    }
+    
         
         
         
