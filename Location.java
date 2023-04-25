@@ -72,9 +72,8 @@ public class Location {
           setPace = Health.getTotalOxen / 4;
             
         }
-    
-        if(Health.sickPerson >= 1){
-            setpace = Health.sickPerson * .10;
+        if(Health.getSickPeople() >= 1){
+            setpace = Health.getSickPeople() * .10;
             
         }
         //if there is snow on the ground
